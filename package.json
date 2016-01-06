@@ -1,0 +1,31 @@
+{
+  "name": "node-toukufm-slackbot",
+  "version": "0.0.1",
+  "description": "Slackbot for the ToukuFM team to make our lives easier.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToukuFM/node-toukufm-slackbot.git"
+  },
+  "keywords": [
+    "toukufm",
+    "radio",
+    "station",
+    "slack",
+    "slackbot"
+  ],
+  "author": "Bakaboykie",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ToukuFM/node-toukufm-slackbot/issues"
+  },
+  "homepage": "https://github.com/ToukuFM/node-toukufm-slackbot#readme",
+  "dependencies": {
+    "mongoose": "^4.3.4",
+    "node-toukufm-api": "0.0.3",
+    "slackbotapi": "^1.3.7"
+  }
+}
