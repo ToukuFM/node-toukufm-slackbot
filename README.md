@@ -8,6 +8,7 @@ Slackbot for the ToukuFM team to make our lives easier.
 
 ## Installing
 
-1) Clone this repository
-2) `npm install` in the repository directory
-3) `node index` to start running
+1) Clone this repository  
+2) `npm install` in the repository directory  
+3) `export SLACK_TOKEN=<your_slack_token>`  
+4) `node index` to start running  
