@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/ToukuFM/node-toukufm-slackbot#readme",
   "dependencies": {
+    "external-ip": "^0.2.4",
     "htmlparser2": "^3.9.0",
     "moment-timezone": "^0.5.0",
     "mongoose": "^4.3.4",
