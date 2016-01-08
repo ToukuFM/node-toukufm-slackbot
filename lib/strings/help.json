@@ -1,30 +1,27 @@
 [
     "Don't fear, _onii-chan_, I'm here to help! :sparkles:",
-    "If a command is labeled like `name|other` it means you can use either~",
-    
-    "-------------------------------------------------------------------",
+    "If a command is displayed as `!<name>|<other_name>` it means you can use either to trigger the command~\n",
     
     "_*Here's some of the things I can do for you related to ToukuFM:*_",
     "`!np|nowplaying` - Display the song that's currently playing on ToukuFM.",
     "`!schedule|upcoming|sch` - Show the ToukuFM schedule for the next two days.",
     "`!schedule|upcoming|sch <number>` - Show the ToukuFM schedule for the next `<number>` days.",
     "`!team` - Show the entire ToukuFM team, and links to their profile pages.",
-    "`!team|member <name>` - Search for a ToukuFM member and give a link to their profile page.",
-    
-    "-------------------------------------------------------------------",
+    "`!team|member <name>` - Search for a ToukuFM member and give a link to their profile page.\n",
     
     "_*There's always time for shenanigans, so check these out:*_",
     "`!hello` - P-please do this often, or I'll start feeling lonely :flushed:",
     "`!say <text>` - Make me say something, b-but don't make it naughty okay?",
     "`!anime latest` - Get the latest anime from Nyaa. Support the creators by buying if you like it!",
     "`!anime search <term>` - Search for a series on Nyaa.",
-    "`!waifu|ratemywaifu <waifu_name>` - I dare you, let me rate your waifu!",
-    
-    "-------------------------------------------------------------------",
+    "`!waifu|ratemywaifu <waifu_name>` - I dare you, let me rate your waifu!\n",
     
     "_*For serious business, here's something to help you:*_",
     "`!help` - You just used this, use it again if you forget how to do something.",
     "`!suggest <something>` - Suggest any feature or report a bug, and someone will make me even better!",
     "`!ip` - Find the IP of my home.",
-    "`!welcome` - Show the welcome message again."
+    "`!welcome` - Show the welcome message again.\n",
+    
+    "_*You can send these in multiple ways:*_",
+    "`@imouto !command`, `@imouto command` or `!command` if you're feeling oldschool."
 ]
