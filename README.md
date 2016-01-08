@@ -16,12 +16,12 @@ Slackbot for the ToukuFM team to make our lives easier.
 3) `export SLACK_TOKEN=<your_slack_token>`  
 4) Find your Bot user ID
 
-    * Run the program using `node index`
-    * Mention your @botname in Slack
-    * Look at the program output and find the message in there
-    * It'll look a bit like this: `"text":"<@U0J1BG81G> Hello there"`
-    * `export SLACK_BOTNAME=your_bot_id` without the `<@` and `>`
-    * So for me, it is `export SLACK_BOTNAME=U0J1BG81G`
+   * Run the program using `node index`
+   * Mention your @botname in Slack
+   * Look at the program output and find the message in there
+   * It'll look a bit like this: `"text":"<@U0J1BG81G> Hello there"`
+   * `export SLACK_BOTNAME=your_bot_id` without the `<@` and `>`
+   * So for me, it is `export SLACK_BOTNAME=U0J1BG81G`
 
 5) Restart and use `node index` every next time to start the bot  
 
@@ -33,6 +33,7 @@ Slackbot for the ToukuFM team to make our lives easier.
 * Is handy
 * Type `!help` to find out more
 
+
 ## Planned Features
 
 * Weekly roundup
@@ -40,4 +41,14 @@ Slackbot for the ToukuFM team to make our lives easier.
 * Soundcloud management functionality
 * Facebook management functionality
 * CMS panel using express with logs, roundup
-* Important announcement posting via CMS
+* Important announcement posting via CMS->#announcements
+
+
+## Contributing
+
+I am always in need of people who like to help, submit an issue, PR or send me a request and we'll get some conversation going. I am open for just about anything, so throw your craziest ideas at me!
+
+
+## License
+
+This program is licensed under the GPL-3.0 license.
