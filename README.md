@@ -5,7 +5,7 @@ Slackbot for the ToukuFM team to make our lives easier.
 
 ## Requirements
 
-* Mongodb - [Follow this useful guide](https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-14-04)
+* Mongodb, use `mongod` to start - [Follow this useful guide](https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-14-04)
 * Linux (Ubuntu 14.04) is recommended
 
 

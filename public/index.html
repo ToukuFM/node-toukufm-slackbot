@@ -1,0 +1,227 @@
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+    <style>
+        body {
+            background: #f2f2f2;
+        }
+        
+        header [role="progressbar"][aria-busy="true"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-top: 8px;
+            width: 100%;
+            background-color: #159756;
+            animation: preloader-background linear 3.5s infinite;
+        }
+        
+        header [role="progressbar"][aria-busy="true"]::before,
+        header [role="progressbar"][aria-busy="true"]::after {
+            display: block;
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            width: 0;
+            height: 8px;
+            background: #afa;
+            animation: preloader-front linear 3.5s infinite;
+            content: '';
+        }
+        
+        header [role="progressbar"][aria-busy="true"]::before {
+            right: 50%;
+        }
+        
+        header [role="progressbar"][aria-busy="true"]::after {
+            left: 50%;
+        }
+        
+        @keyframes preloader-background {
+            0%, 24.9% {
+                background-color: #159756;
+            }
+            25%,
+            49.9% {
+                background-color: #da4733;
+            }
+            50%,
+            74.9% {
+                background-color: #3b78e7;
+            }
+            75%,
+            100% {
+                background-color: #fdba2c;
+            }
+        }
+        
+        @keyframes preloader-front {
+            0% {
+                width: 0;
+                background-color: #da4733;
+            }
+            24.9% {
+                width: 50%;
+                background-color: #da4733;
+            }
+            25% {
+                width: 0;
+                background-color: #3b78e7;
+            }
+            49.9% {
+                width: 50%;
+                background-color: #3b78e7;
+            }
+            50% {
+                width: 0;
+                background-color: #fdba2c;
+            }
+            74.9% {
+                width: 50%;
+                background-color: #fdba2c;
+            }
+            75% {
+                width: 0%;
+                background-color: #159756;
+            }
+            100% {
+                width: 50%;
+                background-color: #159756;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div id="preloader" aria-busy="true" aria-label="Loading, please wait." role="progressbar"></div>
+    </header>
+
+
+    <main style="display:none">
+        <br/>
+        <br/>
+
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m5">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title black-text">Add a new item</span>
+
+                            <form id="roundup_form">
+                                <div class="row">
+                                    <div class="input-field col s3">
+                                        <select id="item_category">
+                                            <option value="" disabled selected>Category</option>
+                                            <option value="1">News</option>
+                                            <option value="2">DJ Mix</option>
+                                            <option value="3">Release</option>
+                                            <option value="4">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-field col s9">
+                                        <input id="item_name" type="text" class="validate">
+                                        <label for="item_name">Your name</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="item_url" type="text" class="validate">
+                                        <label for="item_url">URL</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="item_text" class="materialize-textarea" length="200"></textarea>
+                                        <label for="textarea1">Description</label>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="row">
+                                <div class="col s12">
+                                    <button class="btn  waves-effect waves-light right" id="submit" name="action">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="item-list">
+                    <h1>item-list</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+
+    </main>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <script>
+        $(function() {
+
+            $('select').material_select();
+
+            $.getJSON('/api/roundup/items/', function(data) {
+                console.log(data);
+            });
+
+            // I just want a fancy animation okay ;_;
+            setTimeout(function() {
+                $('#preloader').fadeOut().attr('aria-busy', 'false');
+                $('main').fadeIn();
+            }, 1500);
+
+        });
+
+        $('#submit').click(function() {
+            var cat = $('#item_category');
+            var url = $('#item_url');
+            var text = $('#item_text');
+            var name = $('#item_name');
+
+            if (cat.val() &&
+                url.val() &&
+                text.val() &&
+                text.val().length <= 200 &&
+                name.val()) {
+                
+
+                $.ajax({
+                    url: '/api/roundup/items/',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        category: cat.val(),
+                        url: url.val(),
+                        text: text.val(),
+                        name: name.val()
+                    },
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

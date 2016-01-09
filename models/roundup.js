@@ -2,9 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var roundupSchema = new Schema({
-    creator: String,
+    name: String,
     text: String,
     url: String,
+    category: String,
     date: { type: Date, default: Date.now }
 });
 
