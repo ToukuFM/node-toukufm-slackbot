@@ -2,11 +2,31 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var roundupSchema = new Schema({
-    name: String,
-    text: String,
+    title: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    text: {
+        type: String,
+        required: true
+    },
+    creator: {
+        type: String,
+        required: true
+    },
     url: String,
-    category: String,
-    date: { type: Date, default: Date.now }
+    tweet: {
+        text: String,
+        id: String
+    }
 });
 
 var roundup = mongoose.model('Roundup', roundupSchema);

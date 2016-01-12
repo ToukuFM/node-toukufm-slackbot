@@ -1,0 +1,130 @@
+body {
+    background: #f2f2f2;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+header [role="progressbar"][aria-busy="true"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 8px;
+    width: 100%;
+    background-color: #159756;
+    animation: preloader-background linear 3.5s infinite;
+}
+
+header [role="progressbar"][aria-busy="true"]::before,
+header [role="progressbar"][aria-busy="true"]::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 0;
+    height: 8px;
+    background: #afa;
+    animation: preloader-front linear 3.5s infinite;
+    content: '';
+}
+
+header [role="progressbar"][aria-busy="true"]::before {
+    right: 50%;
+}
+
+header [role="progressbar"][aria-busy="true"]::after {
+    left: 50%;
+}
+
+@keyframes preloader-background {
+    0%, 24.9% {
+        background-color: #159756;
+    }
+    25%,
+    49.9% {
+        background-color: #da4733;
+    }
+    50%,
+    74.9% {
+        background-color: #3b78e7;
+    }
+    75%,
+    100% {
+        background-color: #fdba2c;
+    }
+}
+
+@keyframes preloader-front {
+    0% {
+        width: 0;
+        background-color: #da4733;
+    }
+    24.9% {
+        width: 50%;
+        background-color: #da4733;
+    }
+    25% {
+        width: 0;
+        background-color: #3b78e7;
+    }
+    49.9% {
+        width: 50%;
+        background-color: #3b78e7;
+    }
+    50% {
+        width: 0;
+        background-color: #fdba2c;
+    }
+    74.9% {
+        width: 50%;
+        background-color: #fdba2c;
+    }
+    75% {
+        width: 0%;
+        background-color: #159756;
+    }
+    100% {
+        width: 50%;
+        background-color: #159756;
+    }
+}
+
+.material-icons {
+    font-size: 24px;
+    line-height: 48px;
+}
+
+.collapsible-body {
+    background-color: white;
+}
+
+.container-no-padding {
+    width: 90%;
+}
+
+.dropdown-content {
+    min-width: 200px;
+}
+
+select {
+    font-family: inherit;
+    background-color: transparent;
+    width: 100%;
+    padding: 4px 0;
+    margin-top: 2px;
+    font-size: 16px;
+    color: #9e9e9e;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+}
+
+
+/* Remove focus */
+
+select:focus {
+    outline: none;
+}

@@ -1,0 +1,131 @@
+<html lang="en" ng-app="roundupApp">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+
+    <% include ../partials/preloader %>
+
+        <main style="display:none">
+
+            <br/>
+            <br/>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m5">
+
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">Weekly Roundup</span>
+                                <p>This is the web interface for the ToukuFM weekly
+                                roundup. You can add new items to the current roundup,
+                                or look at previous roundups you might have missed.</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#">This is a link</a>
+                                <a href="#">This is a link</a>
+                            </div>
+                        </div>
+                            
+                        <% include ../partials/roundupform %>
+                    </div>
+
+                    <div class="col s12 m7" id="item-list" ng-controller="RoundupListCtrl">
+
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">
+                                Roundup History
+                                <span class="right">
+                                    <a class="white-text" ng-href="#here" ng-click="refresh()"><i class="material-icons">refresh</i></a>
+                                </span>
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <div ng-repeat="(year, allweeks) in items">
+                            <h6>This week ({{allweeks.length}})<span class="right"><a>Generate news article</a></span></h6>
+                            
+                            <ul class="collapsible" data-collapsible="accordion">
+                                <li ng-repeat="item in allweeks">
+                                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{item.title}}</div>
+                                    <div class="collapsible-body">
+                                        <p>{{item.text}}</p>
+                                        <p>{{item.url}}</p>
+                                        <p>{{item.date}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            
+                            <h4 class="center-align">{{ year }}</h4>
+                        </div>
+                        
+                        <h6>Last week</h6>
+
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">album</i>First</div>
+                                <div class="collapsible-body">
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                                <div class="collapsible-body">
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                                <div class="collapsible-body">
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <h6>Two weeks ago</h6>
+
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">album</i>First</div>
+                                <div class="collapsible-body">
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                                <div class="collapsible-body">
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                                <div class="collapsible-body">
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+
+                </div>
+            </div>
+
+        </main>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script type="text/javascript" src="/js/index.js"></script>
+        <script type="text/javascript" src="/js/controllers.js"></script>
+</body>
+
+</html>

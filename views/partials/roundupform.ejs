@@ -1,0 +1,117 @@
+<ul class="collapsible collapsible-accordion" data-collapsible="accordion" ng-controller="ItemFormController">
+<li>
+<div id="formActiveItem" class="collapsible-header"><i class="material-icons">add</i>Add a new item</div>
+<div class="collapsible-body" style="display: block;">
+<div class="container container-no-padding">
+
+    <form name="roundupForm" ng-submit="submitForm(roundupForm.$valid)" novalidate>
+
+        <div class="row">
+            <div class="input-field col s3">
+                <select name="item_category"  class="browser-default"
+                    id="item_category" 
+                    ng-model="item.category" 
+                    ng-options="cat.id as cat.name for cat in Categories"
+                    required>
+                    <option value="" disabled selected>Category...</option>
+                </select>
+            </div>
+            <div class="input-field col s9">
+                <input id="item_title" type="text" class="validate" ng-model="item.title" ng-minlength="3" ng-maxlength="100"required>
+                <label for="item_title">Short title</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="item_name" type="text" class="validate" ng-model="item.creator" ng-minlength="3" ng-maxlength="50" required>
+                <label for="item_name">Your name</label>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="item_url" type="text" class="validate" ng-model="item.url">
+                <label for="item_url">URL</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="item_text" class="materialize-textarea" length="200" ng-minlength="5" ng-maxlength="200" ng-model="item.text" required></textarea>
+                <label for="textarea1">Description</label>
+            </div>
+        </div>
+    
+        <div class="row">
+        <div class="col s12">
+            <button class="btn waves-effect waves-light right" type="submit">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+    
+    </form>
+    
+</div>
+</div>
+</li>
+</ul>
+
+<!--
+<div class="card">
+    <div class="card-content" ng-controller="ItemFormController">
+        <span class="card-title black-text">Add a new item</span>
+
+        <form id="roundup_form" novalidate>
+            
+            <div class="row">
+                <div class="input-field col s3">
+                    <select id="item_category" ng-model="item.category" required>
+                        <option value="" disabled selected>Category</option>
+                        <option value="1">News</option>
+                        <option value="2">DJ Mix</option>
+                        <option value="3">Release</option>
+                        <option value="4">Other</option>
+                    </select>
+                </div>
+                <div class="input-field col s9">
+                    <input id="item_title" type="text" class="validate" ng-model="item.title" required>
+                    <label for="item_title">Short title</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="item_name" type="text" class="validate" ng-model="item.creator" required>
+                    <label for="item_name">Your name</label>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="item_url" type="text" class="validate" ng-model="item.url" required>
+                    <label for="item_url">URL</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="item_text" class="materialize-textarea" length="200" ng-model="item.description" required></textarea>
+                    <label for="textarea1">Description</label>
+                </div>
+            </div>
+            
+        </form>
+
+        <div class="row">
+            <div class="col s12">
+                <button class="btn waves-effect waves-light right" id="submit" name="action" ng-click="update(item)">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+-->
