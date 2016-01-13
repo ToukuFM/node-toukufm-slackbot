@@ -13,7 +13,7 @@
 </head>
 
 
-<body layout="column" ng-controller="appCtrl">
+<body layout="column" ng-controller="appCtrl" ng-cloak>
     <!-- <% include ./partials/preloader %> -->
 
     <md-toolbar id="top-bar" layout="row">
@@ -22,9 +22,8 @@
 
     <div layout="row" flex>
 
-        <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-md')">
-            <% include ./partials/sidenav %>
-        </md-sidenav>
+        <% include ./partials/sidenav %>
+        
 
         <md-content layout="column" id="main-content" flex class="md-padding">
             <% include ./partials/main %>

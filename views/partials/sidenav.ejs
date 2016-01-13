@@ -1,21 +1,20 @@
-<md-toolbar>
-    <h1 class="md-toolbar-tools">Sidenav Left</h1>
-</md-toolbar>
-<md-content layout-padding ng-controller="sidenavCtrl">
-    <md-button ng-click="close()" class="md-primary" hide-gt-md>
-        Close Sidenav Left
-    </md-button>
-    <h4>Notice</h4>
-    <p>
-        A lot of these features are meant to change at some point. Nothing is 
-        final as of now, and the UI will change a lot.
-    </p>
-    <p>
-        For example, the main "feed" will be divided into weeks so it's easy to 
-        see the history of the feed.
-    </p>
-    
-<pre>
+<!--
+<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">Information</h1>
+    </md-toolbar>
+    <md-content layout-padding ng-controller="sidenavCtrl">
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+            Close
+        </md-button>
+        <p>
+            A lot of these features are meant to change at some point. Nothing is final as of now, and the UI will change a lot.
+        </p>
+        <p>
+            For example, the main "feed" will be divided into weeks so it's easy to see the history of the feed.
+        </p>
+
+        <pre>
 Planned features
 - Settings with refresh interval, more
 - Divide feed by week
@@ -24,10 +23,77 @@ Planned features
 - Tighter integration with Touku
 - Tighter integration with slackbot
 - You name it?
-</pre>
+        </pre>
 
-    <p>
-        This webapp runs on Node.js, in the same context as Yukiko (slackbot version).
-        The frontend is a pure angular-material app without Jquery nonsense.
-    </p>
-</md-content>
+        <p>
+            This webapp runs on Node.js, in the same context as Yukiko (slackbot version). The frontend is a pure angular-material app without Jquery nonsense.
+        </p>
+    </md-content>
+</md-sidenav>
+-->
+
+<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="sidenav" md-is-locked-open="$mdMedia('gt-md')">
+
+    <md-toolbar class="md-tall md-hue-2">
+        <span flex></span>
+        <div layout="column" class="md-toolbar-tools-bottom inset">
+            <user-avatar></user-avatar>
+            <span>&nbsp;</span>
+            <div>@username</div>
+        </div>
+    </md-toolbar>
+    <md-list ng-controller="sidenavCtrl">
+        <md-item ng-repeat="item in menu">
+            <md-content md-ink-ripple="#737373">
+                <md-item-content layout="row" layout-align="start center">
+                    <div class="inset">
+                        <md-icon>{{item.icon}}</md-icon>
+                    </div>
+                    <div class="inset">
+                        {{item.title}}
+                    </div>
+                </md-item-content>
+            </md-content>
+        </md-item>
+        <md-divider></md-divider>
+        <md-subheader>Management</md-subheader>
+        <md-item ng-repeat="item in admin">
+            <md-content md-ink-ripple="#737373">
+                <md-item-content layout="row" layout-align="start center">
+                    <div class="inset">
+                        <md-icon>{{item.icon}}</md-icon>
+                    </div>
+                    <div class="inset">{{item.title}}
+                    </div>
+                </md-item-content>
+            </md-content>
+        </md-item>
+    </md-list>
+
+    <md-content layout-padding ng-controller="sidenavCtrl">
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+            Close
+        </md-button>
+        <p>
+            A lot of these features are meant to change at some point. Nothing is final as of now, and the UI will change a lot.
+        </p>
+        <p>
+            For example, the main "feed" will be divided into weeks so it's easy to see the history of the feed.
+        </p>
+
+        <pre>
+Planned features
+- Settings with refresh interval, more
+- Divide feed by week
+- Generate article
+- See article generation output
+- Tighter integration with Touku
+- Tighter integration with slackbot
+- You name it?
+        </pre>
+
+        <p>
+            This webapp runs on Node.js, in the same context as Yukiko (slackbot version). The frontend is a pure angular-material app without Jquery nonsense.
+        </p>
+    </md-content>
+</md-sidenav>

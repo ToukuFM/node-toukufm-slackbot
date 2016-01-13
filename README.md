@@ -32,6 +32,9 @@ Slackbot for the ToukuFM team to make our lives easier.
 * Is very cute
 * Is handy
 * Type `!help` to find out more
+* Roundup WebUI using `angular-material` and `ExpressJS`
+    * Use `$ export IP=<ipaddr>` and `$ export PORT=<port>` to define which 
+      port you want to use for the webserver.
 
 
 ## Planned Features

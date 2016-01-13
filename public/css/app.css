@@ -49,3 +49,16 @@ a {
 .description-url-space {
     max-width: 86%;
 }
+
+/* Sidebar CSS */
+h2 {
+  font-weight: 400;
+}
+
+md-item a {
+    color: rgba(0,0,0,.87);
+}
+
+.user-avatar {
+  border-radius: 99%;
+}
