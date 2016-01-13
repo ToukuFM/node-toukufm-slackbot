@@ -1,0 +1,33 @@
+<div layout="row" layout-xs="column" layout-align="space-around">
+    <div ng-controller="roundupCtrl" flex-gt-sm="60" flex="100">
+
+        <div ng-repeat="(year, allweeks) in items">
+            <div layout="row" layout-align="space-between">
+                <span id="roundup-current-week" ng-disabled="true" class="md-button">This week ({{allweeks.length}})</span>
+                <md-button class="md-accent">Generate article</md-button>
+            </div>
+
+
+            <md-card>
+                <md-card-content>
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-repeat="item in allweeks">
+                            <div class="md-list-item-text">
+                                <h3>{{item.title}} <i>({{item.category}})</i></h3>
+                                <h4>Added by: {{item.creator}}</h4>
+                                <p ng-class="(item.url) ? 'description-url-space' : ''">{{item.text}}</p>
+                                <md-button class="md-secondary" ng-if="item.url" href="{{item.url}}">Link</md-button>
+                            </div>
+                            <md-divider ng-if="!$last"></md-divider>
+                        </md-list-item>
+                    </md-list>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button>Action 1</md-button>
+                    <md-button>Action 2</md-button>
+                </md-card-actions>
+            </md-card>
+
+        </div>
+    </div>
+</div>

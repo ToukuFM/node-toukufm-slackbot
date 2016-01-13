@@ -1,0 +1,57 @@
+<md-dialog aria-label="Add an item" ng-cloak ng-controller="formCtrl">
+    <form name="addItemForm">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add an item</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="hide()">
+                    <md-icon class="material-icon">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <form name="roundupForm">
+                    <div layout-gt-sm="row">
+                        
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Your name</label>
+                            <input ng-model="form.creator" ng-minlength="3" md-maxlength="50" required>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Category</label>
+                            <md-select ng-model="form.category" ng-model="item.category" required>
+                                <md-option ng-repeat="cat in categories" value="{{cat.id}}">
+                                    {{cat.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                    <md-input-container class="md-block">
+                        <label>Short title</label>
+                        <input ng-model="form.title" md-minlength="3" md-maxlength="100" required>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>URL (Not required)</label>
+                        <input ng-model="form.url">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Description</label>
+                        <textarea ng-model="form.text" 
+                            enter-submit="submit(addItemForm.$valid)"
+                            ng-minlength="10" 
+                            md-maxlength="200" 
+                            required></textarea>
+                    </md-input-container>
+                </form>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <p class="error-message" ng-show="ifError">{{error}}</p>
+            <md-button ng-click="submit(addItemForm.$valid)" style="margin-right:10px;" ng-show="showButton" ng-disabled="addItemForm.$invalid">
+                Submit&nbsp;&nbsp;<md-icon class="material-icon">send</md-icon>
+            </md-button>
+            <md-progress-circular md-mode="indeterminate" ng-show="showSpinner"></md-progress-circular>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

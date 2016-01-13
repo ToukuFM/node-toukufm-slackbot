@@ -1,0 +1,33 @@
+<md-toolbar>
+    <h1 class="md-toolbar-tools">Sidenav Left</h1>
+</md-toolbar>
+<md-content layout-padding ng-controller="sidenavCtrl">
+    <md-button ng-click="close()" class="md-primary" hide-gt-md>
+        Close Sidenav Left
+    </md-button>
+    <h4>Notice</h4>
+    <p>
+        A lot of these features are meant to change at some point. Nothing is 
+        final as of now, and the UI will change a lot.
+    </p>
+    <p>
+        For example, the main "feed" will be divided into weeks so it's easy to 
+        see the history of the feed.
+    </p>
+    
+<pre>
+Planned features
+- Settings with refresh interval, more
+- Divide feed by week
+- Generate article
+- See article generation output
+- Tighter integration with Touku
+- Tighter integration with slackbot
+- You name it?
+</pre>
+
+    <p>
+        This webapp runs on Node.js, in the same context as Yukiko (slackbot version).
+        The frontend is a pure angular-material app without Jquery nonsense.
+    </p>
+</md-content>
