@@ -65,19 +65,24 @@ app.route('/api/roundup/items/')
     .get(function(req, res, next) {
         roundup.find({}).sort('-date').exec(function(err, items) {
             if (err) throw err;
-
+            
             var history = {};
+
             for (var item in items) {
                 var fullyear = items[item].date.getFullYear();
+                var week = items[item].date.getWeekNumber();
+
                 if (!history[fullyear]) {
-                    history[fullyear] = [];
+                    history[fullyear] = {};
                 }
 
-                items[item].week = items[item].date.getWeekNumber();
+                if (!history[fullyear][week]) {
+                    history[fullyear][week] = [];
+                }
 
-                history[fullyear].push(items[item]);
+                history[fullyear][week].push(items[item]);
             }
-
+            
             res.send(history);
         });
     })
@@ -103,7 +108,7 @@ app.route('/api/roundup/items/')
                             res.status(500).send(err);
                         else {
                             res.send(item._id);
-                            
+
                             var msg = '_@' + item.creator +
                                 ' has added a new item to the roundup:_\n\n' +
                                 '\n*' + item.title + '*\n' + item.text + '\n' +
@@ -125,9 +130,9 @@ app.route('/api/roundup/items/')
                         res.send(item._id);
 
                         var msg = '_@' + item.creator +
-                                ' has added a new item to the roundup:_\n\n' +
-                                '\n*' + item.title + '*\n' + item.text + '\n' +
-                                '_Category:_ ' + item.category;
+                            ' has added a new item to the roundup:_\n\n' +
+                            '\n*' + item.title + '*\n' + item.text + '\n' +
+                            '_Category:_ ' + item.category;
                         slack.sendMsg('C0EAXD8PL', msg);
                     }
                 });

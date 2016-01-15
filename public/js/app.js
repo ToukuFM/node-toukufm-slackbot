@@ -1,6 +1,6 @@
 /* global angular */
 
-var app = angular.module('toukuApp', ['ngMaterial', 'ng-mfb']);
+var app = angular.module('toukuApp', ['ngMaterial']);
 
 app.config(['$mdThemingProvider', function($mdThemingProvider) {
     var toukuTheme = $mdThemingProvider.extendPalette('orange', {
@@ -14,7 +14,7 @@ app.config(['$mdThemingProvider', function($mdThemingProvider) {
         .primaryPalette('toukuTheme', {
             'default': '600'
         })
-        .accentPalette('blue');
+        .accentPalette('indigo');
 }]);
 
 // Directives ================================================================ #
@@ -103,6 +103,34 @@ app.controller('sidenavCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', funct
     }];
 }]);
 
+app.controller('menuCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+    this.openMenu = function($mdOpenMenu, ev) {
+      originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
+    this.notificationsEnabled = true;
+    this.toggleNotifications = function() {
+      this.notificationsEnabled = !this.notificationsEnabled;
+    };
+    this.redial = function() {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .targetEvent(originatorEv)
+          .clickOutsideToClose(true)
+          .parent('body')
+          .title('Suddenly, a redial')
+          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
+          .ok('That was easy')
+      );
+      originatorEv = null;
+    };
+    this.checkVoicemail = function() {
+      // This never happens.
+    };
+  });
+
+
 app.controller('roundupCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdToast', '$log', 'itemService', function($scope, $timeout, $mdSidenav, $mdToast, $log, itemService) {
 
     $scope.amountNew = 0;
@@ -131,6 +159,7 @@ app.controller('roundupCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdToast', '
     $scope.refresh = function(ignore) {
         $scope.itemService = itemService.items()
             .success(function(data) {
+                /*
                 try {
                     for (var item in data[Object.keys(data)[0]]) {
                         if (data[Object.keys(data)[0]][item]._id == $scope.items[Object.keys($scope.items)[0]][0]._id) {
@@ -146,6 +175,8 @@ app.controller('roundupCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdToast', '
                     $scope.ignoreNew = false;
                     $scope.showActionToast($scope.amountNew);
                 }
+                */
+                
                 $scope.items = data;
             });
     };

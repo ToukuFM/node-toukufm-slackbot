@@ -1,5 +1,6 @@
-<nav mfb-menu position="br" toggling-method="hover">
-    <md-button class="md-fab md-primary" ng-click="openDialog()" ng-controller="fabCtrl">
-        <md-icon class="material-icons">add</md-icon>
-    </md-button>
-</nav>
+<md-button class="md-fab md-fab-bottom-right" ng-controller="fabCtrl" ng-click="openDialog()">
+    <md-tooltip md-direction="top">
+          Add a new item
+    </md-tooltip>
+    <md-icon>add</ng-md-icon>
+</md-button>
